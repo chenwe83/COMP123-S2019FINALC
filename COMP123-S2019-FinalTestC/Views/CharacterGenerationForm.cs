@@ -37,7 +37,7 @@ namespace COMP123_S2019_FinalTestC.Views
             }
         }
 
-        private string GetRandomItemFromFileList(string _fileName)
+        private string GetRamdomFLName(string _fileName)
         {
 
             List<string> _listFromFile = File.ReadAllLines(_fileName).ToList();
@@ -54,11 +54,9 @@ namespace COMP123_S2019_FinalTestC.Views
         {
             string firstName = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), @"..\..\Data\firstNames.txt"));
             string lastName = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), @"..\..\Data\lastNames.txt"));
-
-            Program.characterPortfolio.Identity.FirstName = GetRandomItemFromFileList(firstName);
+            Program.characterPortfolio.Identity.FirstName = GetRamdomFLName(firstName);
             FirstNameDataLabel.Text = Program.characterPortfolio.Identity.FirstName;
-
-            Program.characterPortfolio.Identity.LastName = GetRandomItemFromFileList(lastName);
+            Program.characterPortfolio.Identity.LastName = GetRamdomFLName(lastName);
             LastNameDataLabel.Text = Program.characterPortfolio.Identity.LastName;
 
         }
@@ -104,6 +102,47 @@ namespace COMP123_S2019_FinalTestC.Views
                 string fileName = op.SafeFileName;
             }
 
+        }
+
+        private void GenerateAbilitiesButton_Click(object sender, EventArgs e)
+        {
+            Random random = new Random();
+            int str = random.Next(1, 51);
+            int dex = random.Next(1, 51);
+            int end = random.Next(1, 51);
+            int intel = random.Next(1, 51);
+            int edu = random.Next(1, 51);
+            int soc = random.Next(1, 51);
+            StrengthDataLabel.Text = str.ToString();
+            DexterityDataLabel.Text = dex.ToString();
+            EnduranceDataLabel.Text = end.ToString();
+            IntellectDataLabel.Text = intel.ToString();
+            EducationDataLabel.Text = edu.ToString();
+            SocialStandingDataLabel.Text = soc.ToString();
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog op = new OpenFileDialog();
+            op.InitialDirectory = "c:\\";
+            op.Filter = "ext files (*.txt)|*.txt|All files(*.*)|*>**";
+            op.FilterIndex = 2;
+
+            if (op.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = op.FileName;
+                string fileName = op.SafeFileName;
+            }
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.InitialDirectory = "c:\\";
+            saveFileDialog1.Filter = "ext files (*.txt)|*.txt|All files(*.*)|*>**";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+            DialogResult dr = saveFileDialog1.ShowDialog();
         }
     }
 }
