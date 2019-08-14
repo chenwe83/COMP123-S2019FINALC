@@ -186,7 +186,7 @@
             this.FirstNameDataLabel.Size = new System.Drawing.Size(394, 60);
             this.FirstNameDataLabel.TabIndex = 0;
             this.FirstNameDataLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.FirstNameDataLabel.Click += new System.EventHandler(this.FirstNameDataLabel_Click);
+
             // 
             // LastNameDataLabel
             // 
