@@ -9,8 +9,8 @@ using System.IO;
 using System.Linq;
 
 /*
- * STUDENT NAME:
- * STUDENT ID:
+ * STUDENT NAME:WeiYang Chen
+ * STUDENT ID:300728876
  * DESCRIPTION: This is the main form for the application
  */
 
