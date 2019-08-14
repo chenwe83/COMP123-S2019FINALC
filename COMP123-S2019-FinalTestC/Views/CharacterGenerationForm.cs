@@ -31,7 +31,7 @@ namespace COMP123_S2019_FinalTestC.Views
         /// <param name="e"></param>
         private void BackButton_Click(object sender, EventArgs e)
         {
-            if(MainTabControl.SelectedIndex != 0)
+            if (MainTabControl.SelectedIndex != 0)
             {
                 MainTabControl.SelectedIndex--;
             }
@@ -39,13 +39,13 @@ namespace COMP123_S2019_FinalTestC.Views
 
         private string GetRandomItemFromFileList(string _fileName)
         {
-            //Populate a list with file content
+
             List<string> _listFromFile = File.ReadAllLines(_fileName).ToList();
 
-            //Get number of list items
+
             int _listLength = _listFromFile.Count;
 
-            //Populate _result with a random item from list
+
             string _result = _listFromFile[random.Next(_listLength)];
 
             return _result;
@@ -69,7 +69,7 @@ namespace COMP123_S2019_FinalTestC.Views
         /// <param name="e"></param>
         private void NextButton_Click(object sender, EventArgs e)
         {
-            if(MainTabControl.SelectedIndex < MainTabControl.TabPages.Count - 1)
+            if (MainTabControl.SelectedIndex < MainTabControl.TabPages.Count - 1)
             {
                 MainTabControl.SelectedIndex++;
             }
@@ -78,6 +78,32 @@ namespace COMP123_S2019_FinalTestC.Views
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void saveToolStripButton_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.InitialDirectory = "c:\\";
+            saveFileDialog1.Filter = "ext files (*.txt)|*.txt|All files(*.*)|*>**";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+            DialogResult dr = saveFileDialog1.ShowDialog();
+        }
+
+        private void openToolStripButton_Click(object sender, EventArgs e)
+        {
+
+            OpenFileDialog op = new OpenFileDialog();
+            op.InitialDirectory = "c:\\";
+            op.Filter = "ext files (*.txt)|*.txt|All files(*.*)|*>**";
+            op.FilterIndex = 2;
+
+            if (op.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = op.FileName;
+                string fileName = op.SafeFileName;
+            }
+
         }
     }
 }
